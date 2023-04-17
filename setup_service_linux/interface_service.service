@@ -1,0 +1,20 @@
+[Unit]
+
+Description=text_description
+Requires=network.target
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=full_path_file_run
+ExecStop=/bin/echo stop service
+KillMode=mixed
+TimeoutStopSec=30
+User=username
+LimitNOFILE=100000
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+
